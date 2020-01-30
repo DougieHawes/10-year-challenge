@@ -1,0 +1,108 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    text-align:center;
+}
+
+body {
+    background-image: radial-gradient(#666,#333);
+    color: #f8f8f8;
+    cursor: none;
+    font-family: 'Audiowide', cursive;
+    height: 100vh;
+}
+
+.cursor1, .cursor2, .cursor3 {
+    background: #f8f8f8;
+    border-radius: 100%;
+    height: 7px;
+    pointer-events: events;
+    position: absolute;
+    transform: scale(.7);
+    user-select: none;
+    width: 7px;
+    z-index: 1;
+
+    transition: .7s cubic-bezier(0.7, -0.28, 0.3, 2.1) transform, .2s cubic-bezier(0.7, -0.28, 0.3, 2.1) opacity;
+}
+
+.cursor1::before, .cursor2::before, .cursor3::before {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 105%;
+}
+
+.cursor1::before {
+    background-image: url('./year01.png');
+}
+.cursor2::before {
+    background-image: url('./year02.png');
+}
+.cursor3::before {
+    background-image: url('./year03.png');
+}
+
+.cursor1.active, .cursor2.active, .cursor3.active {
+    opacity: .9;
+    transform: scale(11);
+}
+
+.cursor1.active::before, .cursor2.active::before, .cursor3.active::before {
+    opacity: 1;
+}
+
+.cursor-follower {
+    background: rgba(255, 255, 255, .1);
+    border-radius: 100%;
+    height: 42px;
+    pointer-events: none;
+    position: absolute;
+    transform: translate(4px, 4px);
+    user-select: none;
+    width: 42px;
+    z-index: 1;
+
+    transition: .7s cubic-bezier(0.7, -0.28, 0.3, 2.1) transform, .7s  cubic-bezier(0.7, -0.28, 0.3, 2.1) opacity;
+}
+
+.cursor-follower.active {
+    opacity: .3;
+    transform: scale(0);
+}
+
+#wrapper {
+    height: 100vh;
+    width: 100%;
+}
+
+.portfolio-thumb {
+    height: 280px;
+    margin: 42px auto;
+    overflow: hidden;
+    transition: all cubic-bezier(0.21, 1, 0.2, 1.4);
+    width: 280px
+}
+
+img {
+    opacity: .7;
+    width: 280px;
+
+    transition: 1.4s opacity ease-in-out,1.4s width ease-in-out, 1.4s margin-top ease-in-out, 1.4s margin-left ease-in-out;
+}
+img:hover {
+    margin-left: -35px;
+    margin-top: -35px;
+    opacity: 1;
+    width: 350px;
+}
